@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booksearch</title>
+    
+    <!-- 스타일시트 -->
+    <link rel="stylesheet" href="reset.css" type="text/css">
+    <link rel="stylesheet" href="main.css" type="text/css">
+
+    <!-- 폰트어썸 CDN 5.15.4 -->
+    <script src="https://kit.fontawesome.com/4e6349bb03.js" crossorigin="anonymous"></script>
+
+    <!-- 웹폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Noto+Sans+KR:wght@100;300;400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- 1. header -->
+    <div id="header">
+        <div id="headerBg">
+            <!-- 텍스트 박스 -->
+            <div id="textBox">
+                <div class="text-cont">
+                    <div class="item-title">Book Search</div>
+                    <div class="item-sub">Books let you to travel without moving your feet</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. search box -->
+        <div id="searchBox">
+            <form id="searchForm">
+                <input type="text" id="query" placeholder="Search for anything" />
+                <button type="submit" id="btn">Find it now</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- 3. main list -->
+    <div id="main">
+        <!-- 정렬 (높은가격 / 낮은가격) -->
+
+        <!-- <i class="fas fa-caret-down"></i> -->
+
+        <!-- 정렬 리스트 -->
+        <div id="dropbox">
+            <select class="select-box">
+                <option>
+                    <a href="#" class="desc">
+                        <div>sort: lowest price</div>
+                    </a>
+                </option> 
+                <option>
+                    <a href="#" class="asc">
+                        <div>sort: highest price</div>
+                    </a>
+                </option>
+            </select>
+        </div>
+
+        <!-- 검색 내용 불러오기 -->
+        <ul id="list">
+            <li>
+                <a href="#">
+                    <!-- 섬네일 -->
+                    <div id="thumb">
+                        <span class="thumbnail"></span>
+                    </div>
+
+                    <!-- 정보 -->
+                    <div id="info">
+                        <!-- 제목 -->
+                        <h2>불편한 편의점</h2>
+
+                        <!-- 작가 / 출판사 / 출간일 -->
+                        <div class="subinfo">
+                            <span class="author">김호연</span>
+                            <span class="publisher">나무옆의자</span>
+                            <span class="datetime">2021.04.20</span>
+                        </div>
+
+                        <!-- 책 간략 소개 -->
+                        <p>
+                            누적 판매 40만부 돌파, 2022년 가장 사랑받는 소설 ★★★전 서점 종합베스트 1위,
+                            2021 올해의 책, ★★★국립중앙도서관 사서추천도서, 해외 6개국 판권 수출
+                            김호연 작가의장편소설 『불편한 편의점』이 2022년 가장 사랑받는 소설
+                        </p>
+                    </div>
+
+                    <!-- 가격 -->
+                    <div id="priceBox">
+                        <span class="price">₩12,600</span>
+                    </div>
+                </a>
+            </li>
+
+
+
+            <li>
+                <a href="#">
+                    <!-- 섬네일 -->
+                    <div id="thumb">
+                        <span class="thumbnail"></span>
+                    </div>
+
+                    <!-- 정보 -->
+                    <div id="info">
+                        <!-- 제목 -->
+                        <h2>불편한 편의점</h2>
+
+                        <!-- 작가 / 출판사 / 출간일 -->
+                        <div class="subinfo">
+                            <span class="author">김호연</span>
+                            <span class="publisher">나무옆의자</span>
+                            <span class="datetime">2021.04.20</span>
+                        </div>
+
+                        <!-- 책 간략 소개 -->
+                        <p>
+                            누적 판매 40만부 돌파, 2022년 가장 사랑받는 소설 ★★★전 서점 종합베스트 1위,
+                            2021 올해의 책, ★★★국립중앙도서관 사서추천도서, 해외 6개국 판권 수출
+                            김호연 작가의장편소설 『불편한 편의점』이 2022년 가장 사랑받는 소설
+                        </p>
+                    </div>
+
+                    <!-- 가격 -->
+                    <div id="priceBox">
+                        <span class="price">₩12,600</span>
+                    </div>
+                </a>
+            </li>
+
+
+
+            <li>
+                <a href="#">
+                    <!-- 섬네일 -->
+                    <div id="thumb">
+                        <span class="thumbnail"></span>
+                    </div>
+
+                    <!-- 정보 -->
+                    <div id="info">
+                        <!-- 제목 -->
+                        <h2>불편한 편의점</h2>
+
+                        <!-- 작가 / 출판사 / 출간일 -->
+                        <div class="subinfo">
+                            <span class="author">김호연</span>
+                            <span class="publisher">나무옆의자</span>
+                            <span class="datetime">2021.04.20</span>
+                        </div>
+
+                        <!-- 책 간략 소개 -->
+                        <p>
+                            누적 판매 40만부 돌파, 2022년 가장 사랑받는 소설 ★★★전 서점 종합베스트 1위,
+                            2021 올해의 책, ★★★국립중앙도서관 사서추천도서, 해외 6개국 판권 수출
+                            김호연 작가의장편소설 『불편한 편의점』이 2022년 가장 사랑받는 소설
+                        </p>
+                    </div>
+
+                    <!-- 가격 -->
+                    <div id="priceBox">
+                        <span class="price">₩12,600</span>
+                    </div>
+                </a>
+            </li>
+
+
+
+
+            <li>
+                <a href="#">
+                    <!-- 섬네일 -->
+                    <div id="thumb">
+                        <span class="thumbnail"></span>
+                    </div>
+
+                    <!-- 정보 -->
+                    <div id="info">
+                        <!-- 제목 -->
+                        <h2>불편한 편의점</h2>
+
+                        <!-- 작가 / 출판사 / 출간일 -->
+                        <div class="subinfo">
+                            <span class="author">김호연</span>
+                            <span class="publisher">나무옆의자</span>
+                            <span class="datetime">2021.04.20</span>
+                        </div>
+
+                        <!-- 책 간략 소개 -->
+                        <p>
+                            누적 판매 40만부 돌파, 2022년 가장 사랑받는 소설 ★★★전 서점 종합베스트 1위,
+                            2021 올해의 책, ★★★국립중앙도서관 사서추천도서, 해외 6개국 판권 수출
+                            김호연 작가의장편소설 『불편한 편의점』이 2022년 가장 사랑받는 소설
+                        </p>
+                    </div>
+
+                    <!-- 가격 -->
+                    <div id="priceBox">
+                        <span class="price">₩12,600</span>
+                    </div>
+                </a>
+            </li>
+
+
+
+
+
+            <li>
+                <a href="#">
+                    <!-- 섬네일 -->
+                    <div id="thumb">
+                        <span class="thumbnail"></span>
+                    </div>
+
+                    <!-- 정보 -->
+                    <div id="info">
+                        <!-- 제목 -->
+                        <h2>불편한 편의점</h2>
+
+                        <!-- 작가 / 출판사 / 출간일 -->
+                        <div class="subinfo">
+                            <span class="author">김호연</span>
+                            <span class="publisher">나무옆의자</span>
+                            <span class="datetime">2021.04.20</span>
+                        </div>
+
+                        <!-- 책 간략 소개 -->
+                        <p>
+                            누적 판매 40만부 돌파, 2022년 가장 사랑받는 소설 ★★★전 서점 종합베스트 1위,
+                            2021 올해의 책, ★★★국립중앙도서관 사서추천도서, 해외 6개국 판권 수출
+                            김호연 작가의장편소설 『불편한 편의점』이 2022년 가장 사랑받는 소설
+                        </p>
+                    </div>
+
+                    <!-- 가격 -->
+                    <div id="priceBox">
+                        <span class="price">₩12,600</span>
+                    </div>
+                </a>
+            </li>
+
+
+
+
+
+            <li>
+                <a href="#">
+                    <!-- 섬네일 -->
+                    <div id="thumb">
+                        <span class="thumbnail"></span>
+                    </div>
+
+                    <!-- 정보 -->
+                    <div id="info">
+                        <!-- 제목 -->
+                        <h2>불편한 편의점</h2>
+
+                        <!-- 작가 / 출판사 / 출간일 -->
+                        <div class="subinfo">
+                            <span class="author">김호연</span>
+                            <span class="publisher">나무옆의자</span>
+                            <span class="datetime">2021.04.20</span>
+                        </div>
+
+                        <!-- 책 간략 소개 -->
+                        <p>
+                            누적 판매 40만부 돌파, 2022년 가장 사랑받는 소설 ★★★전 서점 종합베스트 1위,
+                            2021 올해의 책, ★★★국립중앙도서관 사서추천도서, 해외 6개국 판권 수출
+                            김호연 작가의장편소설 『불편한 편의점』이 2022년 가장 사랑받는 소설
+                        </p>
+                    </div>
+
+                    <!-- 가격 -->
+                    <div id="priceBox">
+                        <span class="price">₩12,600</span>
+                    </div>
+                </a>
+            </li>
+
+
+
+
+            <li>
+                <a href="#">
+                    <!-- 섬네일 -->
+                    <div id="thumb">
+                        <span class="thumbnail"></span>
+                    </div>
+
+                    <!-- 정보 -->
+                    <div id="info">
+                        <!-- 제목 -->
+                        <h2>불편한 편의점</h2>
+
+                        <!-- 작가 / 출판사 / 출간일 -->
+                        <div class="subinfo">
+                            <span class="author">김호연</span>
+                            <span class="publisher">나무옆의자</span>
+                            <span class="datetime">2021.04.20</span>
+                        </div>
+
+                        <!-- 책 간략 소개 -->
+                        <p>
+                            누적 판매 40만부 돌파, 2022년 가장 사랑받는 소설 ★★★전 서점 종합베스트 1위,
+                            2021 올해의 책, ★★★국립중앙도서관 사서추천도서, 해외 6개국 판권 수출
+                            김호연 작가의장편소설 『불편한 편의점』이 2022년 가장 사랑받는 소설
+                        </p>
+                    </div>
+
+                    <!-- 가격 -->
+                    <div id="priceBox">
+                        <span class="price">₩12,600</span>
+                    </div>
+                </a>
+            </li>
+
+
+
+
+            <li>
+                <a href="#">
+                    <!-- 섬네일 -->
+                    <div id="thumb">
+                        <span class="thumbnail"></span>
+                    </div>
+
+                    <!-- 정보 -->
+                    <div id="info">
+                        <!-- 제목 -->
+                        <h2>불편한 편의점</h2>
+
+                        <!-- 작가 / 출판사 / 출간일 -->
+                        <div class="subinfo">
+                            <span class="author">김호연</span>
+                            <span class="publisher">나무옆의자</span>
+                            <span class="datetime">2021.04.20</span>
+                        </div>
+
+                        <!-- 책 간략 소개 -->
+                        <p>
+                            누적 판매 40만부 돌파, 2022년 가장 사랑받는 소설 ★★★전 서점 종합베스트 1위,
+                            2021 올해의 책, ★★★국립중앙도서관 사서추천도서, 해외 6개국 판권 수출
+                            김호연 작가의장편소설 『불편한 편의점』이 2022년 가장 사랑받는 소설
+                        </p>
+                    </div>
+
+                    <!-- 가격 -->
+                    <div id="priceBox">
+                        <span class="price">₩12,600</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+</html>

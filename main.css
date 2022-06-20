@@ -1,0 +1,494 @@
+* {
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+}
+
+.none {
+    display: none;
+}
+
+/* 1. header */
+#header {
+    width: 100%;
+    height: 300px;
+    top: 0;
+    /* 포지션 고정하면 margin-top 신경쓰기 */
+    position: fixed;
+
+    /* 부모 기준 */
+    /* position: relative; */
+}
+#header #headerBg {
+    height: 200px;
+    background-image: url(./img/wallpaper.jpg);
+    background-size: cover;
+    background-position: center 80%;
+    margin-bottom: 50px;
+    background-repeat: no-repeat;
+}
+
+/* header > 텍스트 박스 */
+#header #textBox {
+    margin: 0 auto;
+    /* 텍스트 박스를 가운데로 */
+    display: flex;
+    justify-content: center;
+}
+
+/* header > 텍스트 박스 > 각 텍스트 */
+#header #textBox .text-cont {
+    display: flex;
+	justify-content: space-between;
+    width: 85%;
+    padding: 50px 15px;
+    box-sizing: border-box;
+}
+#header #textBox .text-cont .item-title {
+    font-weight: 600;
+    font-size: 35px;
+    text-shadow: 1px 5px 20px rgba(255, 255, 255, 1);
+}
+#header #textBox .text-cont .item-sub {
+    font-weight: 400;
+    font-size: 20px;
+    text-shadow: 1px 5px 20px rgba(255, 255, 255, 1);
+    line-height: 1.5;
+    text-align: right;
+}
+
+
+/* 2. search box */
+#searchBox {
+    height: 120px;
+    /* max-width: 1200px; */
+    width: 85%;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 5px 5px 30px rgba(216, 216, 216, 0.8);
+    border-radius: 15px;
+    /* z축으로 붕 떠라 */
+    position: absolute;
+    /* absolute의 가운데 정렬 */
+    top: 45%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+/* searchBox > 써치폼 */
+#searchBox #searchForm {
+    height: 60px;
+    display: flex;
+    /* 사이 간격 비율 맞춰라 */
+	justify-content: space-between;
+}
+
+/* searchBox > 써치폼 > 인풋박스 */
+#searchBox #searchForm input {
+    border: 1px solid rgba(77,218,251);
+    background-color: rgba(235,251,255);
+    width: 85%;
+    border-radius: 15px;
+    font-size: 16px;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+#searchBox #searchForm input::placeholder {
+    color: rgb(189, 220, 227);
+    font-size: 16px;
+}
+
+/* searchBox > 써치폼 > 버튼 */
+#searchBox #searchForm button {
+    background-color: rgba(77,218,251);
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    width: 13%;
+    border-radius: 15px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+#searchBox #searchForm button:hover {
+    /* background-color: rgba(77,218,251); */
+    outline: 4px solid rgb(188, 243, 255);
+}
+
+
+
+/* 3. main list */
+#main {
+    /* max-width: 1200px; */
+    width: 85%;
+    margin: 300px auto 0 auto;
+}
+
+/* 메인 > 정렬 */
+#main #dropbox {
+    text-align: right;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* 메인 > 정렬 > select */
+#main #dropbox select {
+    display: inline-block;
+    text-align: right;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+
+    /* 화살표 바꾸기 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 20px;
+    background: url('./img/caret-down-solid.svg') no-repeat 95% 50%; /* 화살표 아이콘 추가 */
+}
+
+select:focus {
+    color: #222;
+    outline: none;
+}
+
+/* 메인 > 정렬 > 링크영역 */
+#main #dropbox select option {
+    display: flex;
+    justify-content: right;
+}
+
+
+/* 메인 > 검색 리스트 */
+#main #list {
+    /* border: 4px solid cyan; */
+
+    padding: 5px;
+    box-sizing: border-box;
+}
+#main #list li {
+    /* border: 4px solid blue; */
+
+    border-bottom: 1px solid #ccc;
+    height: 160px;
+    display: flex;
+    padding: 25px 0;
+}
+#main #list li:last-child {
+    border-bottom: 0;
+}
+#main #list li a {
+    /* border: 4px solid pink; */
+
+    display: flex;
+	justify-content: space-between;
+}
+
+/* 메인 > 검색 리스트 > 섬네일 */
+#main #list li a #thumb {
+    /* border: 4px solid black; */
+
+    width: 120px;
+    /* width: 100%; */
+    /* margin: 0 10px; */
+}
+#main #list li a #thumb .thumbnail {
+    /* border: 4px solid beige; */
+
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-image: url(./img/exboox.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* 메인 > 검색 리스트 > 정보 */
+#main #list li a #info {
+    /* border: 4px solid cyan; */
+
+    width: 80%;
+    padding: 15px 5px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    /* 박스 아래로 */
+    flex-direction: column;
+}
+
+/* 메인 > 검색 리스트 > 정보 > 제목 */
+#main #list li a #info h2 {
+    /* border: 4px solid white; */
+
+    color: #000;
+    font-size: 18px;
+} 
+
+/* 메인 > 검색 리스트 > 정보 > 작가 / 출판사 / 출간일 */
+#main #list li a #info .subinfo {
+    /* border: 4px solid yellow; */
+
+    color: #000;
+    font-size: 14px;
+}
+#main #list li a #info .subinfo span::after {
+    content: '|';
+    margin: 0 5px;
+}
+#main #list li a #info .subinfo span:last-child::after {
+    content: '';
+}
+
+
+/* 메인 > 검색 리스트 > 정보 > 간략 소개 */
+#main #list li a #info p {
+    /* border: 4px solid skyblue; */
+
+    color: #000;
+    font-size: 15px;
+    line-height: 1.5;
+    overflow: hidden;
+}
+
+
+/* 메인 > 가격 */
+#main #list li a #priceBox {
+    width: 10%;
+    /* margin: 0 5px; */
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    display: flex;
+    /* 수평 정렬 */
+    align-items: center;
+    /* 수직 정렬 */
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+
+/* 반응형 : 모바일 -> 태블릿 -> 데스크탑순 */
+@media (min-width: 320px) {
+    /* 1. header > 텍스트 크기 조정 */
+    #header #textBox .text-cont {
+        display: flex;
+        justify-content: space-between;
+    }
+    #header #textBox .text-cont .item-title {
+        font-size: 25px;
+        box-sizing: border-box;
+    }
+    #header #textBox .text-cont .item-sub {
+        font-size: 15px;
+        box-sizing: border-box;
+    }
+
+    /* 2. search box */
+    #searchBox {
+        padding: 15px;
+        height: 120px;
+        /* 수평,수직정렬(써치폼을) */
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    /* searchBox > 써치폼 */
+    #searchBox #searchForm {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    
+    /* searchBox > 써치폼 > 인풋박스 */
+    #searchBox #searchForm input {
+        font-size: 14px;
+        width: 100%;
+        height: 45%;
+    }
+    #searchBox #searchForm input::placeholder {
+        color: rgb(189, 220, 227);
+        font-size: 16px;
+        text-align: center;
+    }
+    
+    /* searchBox > 써치폼 > 버튼 */
+    #searchBox #searchForm button {
+        width: 100%;
+        font-size: 14px;
+        height: 45%;
+    }
+
+    /* 3. main list */
+    #main #list li {
+        border-bottom: 1px solid #ccc;
+        height: auto;
+        display: flex;
+        
+        /* 추가 */
+    }
+    #main #list li a {
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        justify-items: center;
+    }
+    
+    /* 메인 > 검색 리스트 > 섬네일 */
+    #main #list li a #thumb {
+        /* width: 120px; */
+        width: 120px;
+        height: 180px;
+        margin: 0 auto;
+    }
+    #main #list li a #thumb .thumbnail {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background-image: url(./img/exboox.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    /* 메인 > 검색 리스트 > 정보 */
+    #main #list li a #info {
+        width: 100%;
+        padding: 15px 5px;
+    }
+    
+    
+    /* 메인 > 가격 */
+    #main #list li a #priceBox {
+        text-align: center;
+        width: 100%;
+        padding: 8px 0;
+        display: flex;
+    }
+
+    #main #list li a #info h2, #main #list li a #info .subinfo, #main #list li a #info p { padding: 8px 0; };
+}
+
+
+
+@media (min-width: 768px) {
+    /* 3. main list */
+    /* 메인 > 검색 리스트 */
+    #main #list li:last-child {
+        border-bottom: 0;
+    }
+    #main #list li a {
+        height: auto;
+        display: block;
+    }
+
+    /* 메인 > 검색 리스트 > 섬네일 */
+    #main #list li a #thumb {
+        width: 18%;
+        height: 160px;
+        /* 추가) float: left */
+        display: block;
+        float: left;
+        margin: 20px 0;
+    }
+    #main #list li a #thumb .thumbnail {
+         /* 이미지 크기 유지 */
+        /* background-size: contain; */
+        display: block;
+        background-size: 120px 100%;
+        background-image: url(./img/exboox.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    /* 메인 > 검색 리스트 > 정보 */
+    #main #list li a #info {
+        width: 80%;
+        margin: 15px 0px;
+        padding-left: 15px;
+        box-sizing: border-box;
+    }
+
+    /* 추가) float해제 */
+    #main #list li a #info::after {
+        content: "";
+        display: block;
+        clear: both;
+        float: none;
+    }
+
+    /* 메인 > 가격 */
+    #main #list li a #priceBox {
+        width: 100%;
+        padding: 20px 0;
+        box-sizing: border-box;
+    }
+}
+
+
+
+@media (min-width: 1024px) {
+    /* 2. search box */
+    #searchBox {
+        /* 꼭 필요 */
+        display: flex;
+    }
+    
+    /* searchBox > 써치폼 */
+    #searchBox #searchForm {
+        display: flex;
+        flex-direction: row;
+        /* 중앙 정렬 */
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* searchBox > 써치폼 > 인풋박스 */
+    #searchBox #searchForm input {
+        margin-right: 15px;
+        width: 80%;
+        height: 65%;
+    }
+    #searchBox #searchForm input::placeholder {
+        text-align: left;
+    }
+    
+    /* searchBox > 써치폼 > 버튼 */
+    #searchBox #searchForm button {
+        width: 15%;
+        height: 65%;
+    }
+
+
+    /* 3. main list */
+    #main #list li {
+        border-bottom: 1px solid #ccc;
+        height: auto;
+        display: flex;
+    }
+    
+    #main #list li a {
+        display: flex;
+        flex-direction: row;
+        justify-items: center;
+    }
+    
+    /* 메인 > 검색 리스트 > 섬네일 */
+    #main #list li a #thumb {
+        width: 20%;
+        height: 180px;
+    }
+    
+    /* 메인 > 검색 리스트 > 정보 */
+    #main #list li a #info {
+        width: 80%;
+        padding: 15px 5px;
+    }
+    
+    
+    /* 메인 > 가격 */
+    #main #list li a #priceBox {
+        width: 20%;
+    }
+}
