@@ -128,6 +128,8 @@
     text-align: right;
     padding: 10px;
     box-sizing: border-box;
+    /* 검색 버튼 누르면 나오도록 */
+    visibility: hidden;
 }
 
 /* 메인 > 정렬 > select */
@@ -167,7 +169,6 @@ select:focus {
 }
 #main #list li {
     /* border: 4px solid blue; */
-
     border-bottom: 1px solid #ccc;
     height: 160px;
     display: flex;

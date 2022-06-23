@@ -1,8 +1,11 @@
-
-
 // 데이터를 저장하기 위한 전역변수
 var data = null;
 var query = null;
+var page = 1;
+var is_end = false;
+
+var total = null; // 확인용
+
 
 // 검색 버튼에 대한 이벤트
 document.querySelector("#searchForm").addEventListener("submit", e => {
@@ -12,6 +15,39 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
     const queryField = document.querySelector("#query");
     // 공백 없이 value값 가져오기
     query = queryField.value.trim();
+
+    // 중간에 검색 했을 때도 최상단에 위치하도록
+    window.scrollTo(0,0);
+
+    // 무한 스크롤 (+페이지 전환)
+    // 스크롤 (페이지가 끝났으면 자료를 더 보여주지 않게 하는 기능)
+    window.addEventListener('scroll', (e) => {
+        // 스크롤바의 Y좌표
+        // -> window.scrollY (None IE)
+        // -> document.documentElement.scrollTop (IE)
+        const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+        // 웹 브라우저의 창 높이
+        const windowHeight = window.screen.availHeight;
+
+        // HTML 문서의 높이
+        const body = document.body,
+                html = document.documentElement;
+        const documentHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+        
+        // 스크롤바의 반동 효과를 고려해서 scrollY + windowHeight가 documentHeight보다 커질 수 있음
+        if (scrollY + windowHeight >= documentHeight) {
+            // 페이지
+            if (is_end == false && page < 50) { // 카카오 size 페이지 최대가 50임
+                page += 1;
+                APIController();
+            } else if (is_end == true) {
+                alert("마지막 페이지 입니다.");
+                window.scrollTo(0,0);
+                return;
+            }
+        }
+    });
 
     // 검색어가 없을 경우
     if(!query) {
@@ -23,6 +59,7 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
     // ajax
     APIController();
 });
+
 
 // sort : 낮은 가격순 정렬
 document.querySelector('#descBtn').addEventListener("change", (e) => sort('desc'));
@@ -38,7 +75,7 @@ function APIController() {
     // 백엔드 페이지에 접속하는 방식
     const method = "GET";
     // 요청(접속)할 대상 페이지 -> 이 파일의 소스코드를 읽어온다.
-    const url = 'https://dapi.kakao.com/v3/search/book?query=' + query;
+    const url = 'https://dapi.kakao.com/v3/search/book?query=' + query + '&page=1&size=' + page;
 
     xhr.onreadystatechange = (e) => { 
         // target만 추출
@@ -49,9 +86,16 @@ function APIController() {
             // 200 = 응답 성공
             if (target.status == 200) {
                 const req = JSON.parse(target.response);
-                console.log(req);
                 // 가져온 데이터 전역변수에 저장
                 data = req.documents;
+
+                // 페이지 끝 페이지 전이면 false
+                is_end = req.meta.is_end;
+                console.log(is_end);
+
+                // 토탈 문서 수
+                total = req.meta.total_count;
+                console.log(total);
 
                 // UI 프린트
                 UIController();
@@ -84,14 +128,14 @@ function sort(direction) {
     // data에 대한 정렬 (data는 검색해서 나온 갯수)
     for (let i=0; i<data.length-1; i++) {
         for (let j=i+1; j<data.length; i++) {
-            // 내림차순 (낮은거 맨 앞)
-            if (direction == 'desc') { 
+            // 오름차순 (낮은거 맨 앞)
+            if (direction == 'asc') { 
                 if (data[i].price > data[j].price) { // i(전)가격이 j(후) 가격보다 높을 때
                     const tmp = data[i];
                     data[i] = data[j];
                     data[j] = tmp;
                 }
-            } else { // 오름차순 (높은거 맨 앞)
+            } else { // 내림차순 (높은거 맨 앞)
                 if (data[i].price < data[j].price) { // 뒤에가 더 클 때
                     const tmp = data[i];
                     data[i] = data[j];
@@ -106,28 +150,36 @@ function sort(direction) {
 
 // UI Module 화면에 data내용을 출력하는 메소드
 function UIController() {
+
     const list = document.querySelector("#list");
 
-    // Array.from() 함수로 배열을 생성하고 초기화
+    // 검색 내용 초기화 코드
     Array.from(list.getElementsByTagName('li')).map((v, i) => {
-        removeChild(v);
+        // v.innerHTML = '';
+        v.remove();
     });
+    
+    // 정렬 버튼 오픈
+    const dropbox = document.querySelector("#dropbox");
+    dropbox.style.visibility = "visible";
 
 
-
-
+    // API에서 불러온 내용 프린트
     data.map((v, i) => {
-        console.log(v);
+        // console.log(v);
 
+        // 날짜 (년도-월-일)만 반환
         const element = document.querySelector(".datetime");
-        console.log(element);
         var date = v.datetime;
         var datetime = date.slice(0, 10);
+
+        // 가격 3번째 자리마다 ',' 넣기
+        var price = v.price.toLocaleString('ko-KR');
 
         const html = 
         `
         <li>
-            <a href="#">
+            <a href="${v.url}">
                 <!-- 섬네일 -->
                 <div id="thumb">
                     <span class="thumbnail" style="background-image: url(${v.thumbnail})"></span>
@@ -153,14 +205,12 @@ function UIController() {
 
                 <!-- 가격 -->
                 <div id="priceBox">
-                    <span class="price">${v.price}</span>
+                    <span class="price">₩${price}</span>
                 </div>
             </a>
         </li>
         `
         list.insertAdjacentHTML('beforeend', html)
-
-
     });
 }
 
