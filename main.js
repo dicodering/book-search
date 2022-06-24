@@ -61,11 +61,19 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
 });
 
 
-// sort : 낮은 가격순 정렬
-document.querySelector('#descBtn').addEventListener("change", (e) => sort('desc'));
+// 정렬
+function changeSelection() {
+    var select = document.querySelector("#selectBox");
 
-// sort : 높은 가격순 정렬
-document.querySelector('#ascBtn').addEventListener("change", (e) => sort('asc'));
+    // 선택한(selected) option의 value
+    var value = select.options[select.selectedIndex].value;
+
+    if (value == 'desc') {      // 낮은 가격순 정렬
+        sort('desc');
+    } else if (value == 'asc') { // 높은 가격순 정렬
+        sort('asc');
+    }
+}
 
 
 // API 컨트롤 : ajax를 통해 데이터 가져오기
@@ -127,7 +135,7 @@ function APIController() {
 function sort(direction) {
     // data에 대한 정렬 (data는 검색해서 나온 갯수)
     for (let i=0; i<data.length-1; i++) {
-        for (let j=i+1; j<data.length; i++) {
+        for (let j=i+1; j<data.length; j++) {
             // 오름차순 (낮은거 맨 앞)
             if (direction == 'asc') { 
                 if (data[i].price > data[j].price) { // i(전)가격이 j(후) 가격보다 높을 때
@@ -213,6 +221,3 @@ function UIController() {
         list.insertAdjacentHTML('beforeend', html)
     });
 }
-
-
-// UI & API 컨트롤

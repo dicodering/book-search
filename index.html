@@ -51,16 +51,17 @@
 
         <!-- 정렬 리스트 -->
         <div id="dropbox">
-            <select class="select-box">
-                <option id="ascBtn"> 
-                    <a href="#" class="asc">
-                        sort: lowest price
-                    </a>
+            <select id="selectBox" class="select-box" onchange="changeSelection()">
+                <option value="" selected> 
+                    sort by price
                 </option> 
-                <option id="descBtn">
-                    <a href="#" class="desc">
-                        sort: highest price
-                    </a>
+
+                <option value="asc"> 
+                    sort: lowest price
+                </option> 
+
+                <option value="desc">
+                    sort: highest price
                 </option>
             </select>
         </div>
